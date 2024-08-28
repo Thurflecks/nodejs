@@ -1,25 +1,29 @@
 const express = require("express")
 const app = express()
-const {Sequelize} = require("sequelize")
 const bodyparser = require("body-parser")
 const { engine } = require("express-handlebars")
+const produto = require("./models/Produtos.js")
 
-//bd config
-    const sequelize = new Sequelize("test", "root", "", {
-        host: "localhost",
-        dialect: "mysql"
-    })
 
-    sequelize.authenticate().then(()=>{
-        console.log("ok")
-    }).catch((erro)=>{
-        console.log("deu erro fdp " + erro)
-    })
+//config handle
+app.engine("handlebars", engine({ defaultLayout: "main" }))
+app.set("view engine", "handlebars")
 
-app.get("/", function(req, res){
-    res.send("ola")
+//config body
+app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyparser.json())
+
+app.get("/form", function (req, res) {
+    res.render("form")
 })
 
+app.post("/enviado", function (req, res) {
+    produto.create({
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
 
+    res.send("awwdawd")
+})
 
 app.listen(8081)
