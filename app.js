@@ -38,19 +38,21 @@ const produto = require("./models/Produtos.js")
     })
 
     //att valores
-    app.get("/up/:id", function (req, res){
-        produto.findByPk(req.params.id).then(function(produto){
-            res.render("up", {item: produto})
-        })
-    })
+    app.get("/up/:id", function (req, res) {
+        produto.findByPk(req.params.id).then(function(produto) {
+            res.render("up", { item: produto });
+        });
+    });
+    
 
-    app.put("/ok/:id", function(req, res){  
+    app.post("/ok/:id", function (req, res) {
         const id = req.params.id;
         produto.update({
             nome: req.body.nome,
             preco: req.body.preco
-        }, { where: id})
-        res.send("ok")
-    })
+        }, { where: { id: id }})
+        res.redirect("/dados")
+    });
+    
 
 app.listen(8081)
