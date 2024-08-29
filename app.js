@@ -5,6 +5,7 @@ const { engine } = require("express-handlebars")
 const produto = require("./models/Produtos.js")
 
 
+
 //config handlebars
     app.engine("handlebars", engine({ defaultLayout: "main", runtimeOptions: {
         allowProtoPropertiesByDefault: true,
@@ -34,6 +35,22 @@ const produto = require("./models/Produtos.js")
             res.render("dados", {item: item})
         })
 
+    })
+
+    //att valores
+    app.get("/up/:id", function (req, res){
+        produto.findByPk(req.params.id).then(function(produto){
+            res.render("up", {item: produto})
+        })
+    })
+
+    app.put("/ok/:id", function(req, res){  
+        const id = req.params.id;
+        produto.update({
+            nome: req.body.nome,
+            preco: req.body.preco
+        }, { where: id})
+        res.send("ok")
     })
 
 app.listen(8081)
