@@ -5,25 +5,35 @@ const { engine } = require("express-handlebars")
 const produto = require("./models/Produtos.js")
 
 
-//config handle
-app.engine("handlebars", engine({ defaultLayout: "main" }))
-app.set("view engine", "handlebars")
+//config handlebars
+    app.engine("handlebars", engine({ defaultLayout: "main", runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+    }}))
+    app.set("view engine", "handlebars")
 
-//config body
-app.use(bodyparser.urlencoded({extended:false}))
-app.use(bodyparser.json())
+//config body-parser
+    app.use(bodyparser.urlencoded({extended:false}))
+    app.use(bodyparser.json())
 
-app.get("/form", function (req, res) {
-    res.render("form")
-})
-
-app.post("/enviado", function (req, res) {
-    produto.create({
-        nome: req.body.nome,
-        preco: req.body.preco
+//config rotas
+    app.get("/form", function (req, res) {
+        res.render("form")
     })
 
-    res.send("awwdawd")
-})
+    app.post("/enviado", function (req, res) {
+        produto.create({
+            nome: req.body.nome,
+            preco: req.body.preco
+        })
+
+        res.send("awwdawd")
+    })
+
+    app.get("/dados", function (req, res){
+        produto.findAll().then(function(item){
+            res.render("dados", {item: item})
+        })
+
+    })
 
 app.listen(8081)
