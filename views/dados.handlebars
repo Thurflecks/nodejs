@@ -1,13 +1,18 @@
 <div>
     {{#each item}}
 
-    <p>{{this.id}} -- {{this.nome}} -- {{this.preco}} -- <a href="/up/{{this.id}}">
-            <button>editar</button>
-        </a>
-    </p>
+    <div class="vasco">
+        <span>{{this.id}}</span>
+        <p>{{this.nome}}</p>
+        <p>{{this.preco}}</p>
+        <a href="/up/{{this.id}}"> editar </a>
+        <a href="/delete/{{this.id}}"> deletar </a>
+    </div>
+
     {{/each}}
-    <a href="/form">
-        <button>Adicionar</button>
-    </a>
+    <div class="container"><a class="botao" href="/form">
+        Adicionar
+    </a></div>
+    
 
 </div>

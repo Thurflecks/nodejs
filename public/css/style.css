@@ -1,0 +1,44 @@
+body{
+    background-color: white;
+    font-size: 16px;
+}
+
+.vasco{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+    margin-top: 10px;
+}
+.vasco a, .botao{
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    padding: 10px ;
+    border-radius: 1em;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+.up{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    color: black;
+    border: 1em;
+    margin-left: 30px;
+    
+}
+.up input{
+    color: black;
+    margin: 1em;
+    padding: 7px;
+    border-radius: 1em;
+    border-color: black;
+}
+.marginleft{
+    margin-left: 1em;
+}

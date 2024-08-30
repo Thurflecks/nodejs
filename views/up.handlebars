@@ -1,9 +1,13 @@
 <form action="/ok/{{item.id}}" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-    <label for="text">NOME</label>
-    <input type="text" name="nome" id="nome" value='{{{item.nome}}}'>
-    <label for="text">PREÇO</label>
-    <input type="text" name="preco" id="preço" value='{{{item.preco}}}'>
 
-    <button>Enviar</button>
+    <div class="up">
+        <input type="hidden" name="_method" value="PUT">
+        <label for="text">NOME:</label>
+        <input type="text" name="nome" id="nome" value='{{{item.nome}}}'>
+        <label for="text">PREÇO:</label>
+        <input type="text" name="preco" id="preço" value='{{{item.preco}}}'>
+        <button class="botao marginleft">Enviar</button>
+    </div>
+    
+    
 </form>
