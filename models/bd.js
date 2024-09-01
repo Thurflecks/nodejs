@@ -1,8 +1,9 @@
 //config banco de dados
     const {Sequelize} = require("sequelize")
-    const sequelize = new Sequelize("teste", "root", "", {
-        host: "localhost",
-        dialect: "mysql"
+    const sequelize = new Sequelize("sql10728859", "sql10728859", "qdWDvIglik", {
+        host: "sql10.freesqldatabase.com",
+        dialect: "mysql",
+        port: 3306
     })
 
     sequelize.authenticate().then(()=>{
